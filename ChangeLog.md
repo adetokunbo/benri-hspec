@@ -1,0 +1,9 @@
+# Revision history for benri-hspec
+
+`benri-hspec` uses [PVP Versioning][1].
+
+## 0.1.0.0 -- 2022-11-10
+
+* Initial version.
+
+[1]: https://pvp.haskell.org
