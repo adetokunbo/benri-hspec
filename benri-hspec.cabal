@@ -57,3 +57,23 @@ test-suite readme
     , base
     , benri-hspec
     , hspec
+
+Flag use-doc-tests
+  description: Include the doctests in the package tests
+  default:     False
+
+test-suite doctests
+  if flag(use-doc-tests)
+     buildable:     True
+  else
+     buildable:     False
+  type:             exitcode-stdio-1.0
+  main-is:          Main.hs
+  build-depends:
+    , base
+    , doctest   >=0.8
+    , benri-hspec
+    , hspec
+  hs-source-dirs:   doctest
+  default-language: Haskell2010
+  ghc-options:      -threaded
