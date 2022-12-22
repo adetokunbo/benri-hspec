@@ -26,6 +26,6 @@ jobs:
     - name: Display the completed user Nix conf
       run: |
         cat $HOME/.config/nix/nix.conf
-    - name: Run the build in a nix-shell
+    - name: Run the doctests in a nix-shell
       run: |
-        nix-shell --run "cabal new-build --test-show-details=streaming"
+        nix-shell --run "cabal repl --with-ghc=doctest"
