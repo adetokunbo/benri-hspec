@@ -118,7 +118,7 @@ endsJust_ action = endsThen action isJust
 
 {- |
  @action \`endsThen\` expected@ sets the expectation that @action@
- returns that satifies the predicate @p@.
+ returns that satisfies the predicate @p@.
 
 ==== __Example__
 
