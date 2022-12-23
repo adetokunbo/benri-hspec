@@ -1,11 +1,12 @@
 cabal-version:      3.0
 name:               benri-hspec
-version:            0.1.0.0
+version:            0.1.0.1
 synopsis:           Simplify tests where Either or Maybe types are returned from monadic code
 description:
   A small library of __convenient__ functions for writing hspec tests.
 
-  It's simplifies test code that returns `Either` or `Maybe` types from monadic code.
+  It simplifies tests where `Either`, `Maybe` and other types are returned from
+  monadic code.
 
   The [README](https://github.com/adetokunbo/benri-hspec#readme) provides usage examples.
 
