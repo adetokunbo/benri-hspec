@@ -4,18 +4,19 @@ Copyright   : (c) 2022 Tim Emiola
 Maintainer  : Tim Emiola <adetokunbo@emio.la>
 SPDX-License-Identifier: BSD3
 
-Provides \convenient\ functions for writing hspec tests
+Provides \convenient\ functions for writing hspec tests where test values are
+returned from a monad.
 -}
 module Test.Hspec.Benri (
-  -- * monadic version of 'shouldSatisfy'
+  -- * match a predicate
   endsThen,
 
-  -- * expect a @Maybe@ from a monad
+  -- * @Maybe@ values
   endsJust,
   endsJust_,
   endsNothing,
 
-  -- * expect an @Either@ from a monad
+  -- * @Either@ values
   endsLeft,
   endsLeft_,
   endsRight,
@@ -32,9 +33,8 @@ import Test.Hspec (Expectation, HasCallStack, shouldBe, shouldSatisfy)
 -}
 
 
-{- |
- @action \`endsRight\` expected@ sets the expectation that @action@
- returns @Right expected@.
+{- | @action \`endsRight\` expected@ sets the expectation that @action@
+ __returns__ @Right expected@.
 
 ==== __Example__
 
@@ -44,9 +44,8 @@ endsRight :: (HasCallStack, Show a, Eq a, Show b, Eq b) => IO (Either a b) -> b 
 action `endsRight` expected = action >>= (`shouldBe` Right expected)
 
 
-{- |
- @action \`endsLeft\` expected@ sets the expectation that @action@
- returns @Left expected@.
+{- | @action \`endsLeft\` expected@ sets the expectation that @action@ __returns__
+ @Left expected@.
 
 ==== __Example__
 
@@ -57,8 +56,7 @@ endsLeft ::
 action `endsLeft` expected = action >>= (`shouldBe` Left expected)
 
 
-{- |
- @endsRight_ action@ sets the expectation that @action@ returns @Right b@.
+{- | @endsRight_ action@ sets the expectation that @action@ __returns__ @Right b@.
 
 ==== __Example__
 
@@ -68,8 +66,7 @@ endsRight_ :: (Show a, Show b) => IO (Either a b) -> IO ()
 endsRight_ action = endsThen action $ either (const False) (const True)
 
 
-{- |
- @endsLeft_ action@ sets the expectation that @action@ returns @Left a@.
+{- | @endsLeft_ action@ sets the expectation that @action@ __returns__ @Left a@.
 
 ==== __Example__
 
@@ -79,9 +76,8 @@ endsLeft_ :: (Show a, Show b) => IO (Either a b) -> IO ()
 endsLeft_ action = endsThen action $ either (const True) (const False)
 
 
-{- |
- @action \`endsJust\`  expected@ sets the expectation that @action@
- returns @Just expected@.
+{- | @action \`endsJust\` expected@ sets the expectation that @action@ __returns__
+ @Just expected@.
 
 ==== __Example__
 
@@ -92,9 +88,8 @@ endsJust ::
 action `endsJust` expected = action >>= (`shouldBe` Just expected)
 
 
-{- |
- @endsNothing action@ sets the expectation that @action@
- returns @Nothing@.
+{- | @endsNothing action@ sets the expectation that @action@ __returns__
+ @Nothing@.
 
 ==== __Example__
 
@@ -104,9 +99,7 @@ endsNothing :: (Show a, Eq a) => IO (Maybe a) -> IO ()
 endsNothing action = action >>= (`shouldBe` Nothing)
 
 
-{- |
- @endsJust_ action@ sets the expectation that @action@
- returns @Just a@.
+{- | @endsJust_ action@ sets the expectation that @action@ __returns__ @Just a@.
 
 ==== __Example__
 
@@ -116,9 +109,8 @@ endsJust_ :: (Show a) => IO (Maybe a) -> IO ()
 endsJust_ action = endsThen action isJust
 
 
-{- |
- @action \`endsThen\` expected@ sets the expectation that @action@
- returns that satisfies the predicate @p@.
+{- | @action \`endsThen\` expected@ sets the expectation that the result of
+ @action@ __satisfies__ the predicate @p@.
 
 ==== __Example__
 
