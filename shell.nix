@@ -9,6 +9,7 @@ in
     # Some common tools can be added with the `tools` argument
     tools = {
       cabal = "latest";
+      doctest = "latest";
       haskell-language-server = "latest";
       ghcid = "latest";
       fourmolu = "latest";
