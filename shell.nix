@@ -1,5 +1,5 @@
 let
-  project = import ./default.nix;
+  project = import ./default.nix {};
 in
   project.shellFor {
     # Builds a Hoogle documentation index of all dependencies,
@@ -12,7 +12,7 @@ in
       doctest = "latest";
       haskell-language-server = "latest";
       ghcid = "latest";
-      fourmolu = "latest";
+      fourmolu = "0.14.0.0";
       cabal-fmt = "latest";
     };
     # See overlays/tools.nix for more details
