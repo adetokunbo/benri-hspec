@@ -7,21 +7,22 @@ SPDX-License-Identifier: BSD3
 Provides \convenient\ functions for writing hspec tests where test values are
 returned from a monad.
 -}
-module Test.Hspec.Benri (
-  -- * match a predicate
-  endsThen,
+module Test.Hspec.Benri
+  ( -- * match a predicate
+    endsThen
 
-  -- * @Maybe@ values
-  endsJust,
-  endsJust_,
-  endsNothing,
+    -- * @Maybe@ values
+  , endsJust
+  , endsJust_
+  , endsNothing
 
-  -- * @Either@ values
-  endsLeft,
-  endsLeft_,
-  endsRight,
-  endsRight_,
-) where
+    -- * @Either@ values
+  , endsLeft
+  , endsLeft_
+  , endsRight
+  , endsRight_
+  )
+where
 
 import Data.Maybe (isJust)
 import Test.Hspec (Expectation, HasCallStack, shouldBe, shouldSatisfy)
@@ -51,8 +52,8 @@ action `endsRight` expected = action >>= (`shouldBe` Right expected)
 
 >>> pure (readEither "not an int" :: Either String Int) `endsLeft` "Prelude.read: no parse"
 -}
-endsLeft ::
-  (HasCallStack, Show a, Eq a, Show b, Eq b) => IO (Either a b) -> a -> Expectation
+endsLeft
+  :: (HasCallStack, Show a, Eq a, Show b, Eq b) => IO (Either a b) -> a -> Expectation
 action `endsLeft` expected = action >>= (`shouldBe` Left expected)
 
 
@@ -83,8 +84,8 @@ endsLeft_ action = endsThen action $ either (const True) (const False)
 
 >>> pure (readMaybe "1" :: Maybe Int) `endsJust` 1
 -}
-endsJust ::
-  (HasCallStack, Show a, Eq a) => IO (Maybe a) -> a -> Expectation
+endsJust
+  :: (HasCallStack, Show a, Eq a) => IO (Maybe a) -> a -> Expectation
 action `endsJust` expected = action >>= (`shouldBe` Just expected)
 
 
