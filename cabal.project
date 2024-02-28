@@ -1,5 +1,3 @@
 packages: .
 
-
-package benri-hspec
-  flags: +use-doc-tests
+write-ghc-environment-files: always
