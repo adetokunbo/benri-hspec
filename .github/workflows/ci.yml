@@ -28,4 +28,4 @@ jobs:
         cat $HOME/.config/nix/nix.conf
     - name: Run the doctests in a nix-shell
       run: |
-        nix-shell --run "cabal repl --with-ghc=doctest"
+        nix-shell --run "cabal build && cabal test"

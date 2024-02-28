@@ -2,6 +2,10 @@
 
 `benri-hspec` uses [PVP Versioning][1].
 
+## 0.1.0.2 -- 2024-02-28
+
+* Reformated, enabled doctests by default
+
 
 ## 0.1.0.1 -- 2022-12-23
 
