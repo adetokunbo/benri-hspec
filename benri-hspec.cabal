@@ -14,7 +14,7 @@ license:            BSD-3-Clause
 license-file:       LICENSE
 author:             Tim Emiola
 maintainer:         adetokunbo@emio.la
-category:           Web
+category:           Testing
 homepage:           https://github.com/adetokunbo/benri-hspec#readme
 bug-reports:
   https://github.com/adetokunbo/benri-hspec/issues
