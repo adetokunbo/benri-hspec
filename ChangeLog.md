@@ -2,6 +2,10 @@
 
 `benri-hspec` uses [PVP Versioning][1].
 
+## 0.1.0.3 -- 2024-07-10
+
+* Add a tested-with field with the CI-test ghc versions
+
 ## 0.1.0.2 -- 2024-02-28
 
 * Reformated, enabled doctests by default
