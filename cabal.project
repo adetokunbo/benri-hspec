@@ -5,3 +5,6 @@ write-ghc-environment-files: always
 tests: True
 
 test-show-details: streaming
+
+package benri-hspec
+  flags: +use-doc-tests
